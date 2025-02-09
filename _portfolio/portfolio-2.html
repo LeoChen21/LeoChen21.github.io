@@ -1,0 +1,48 @@
+---
+title: "Project DaVinci"
+excerpt: "Converts video of basketball shot to a video depicting shooting form."
+collection: portfolio
+---
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Project DaVinci</title>
+    <style>
+        .video-container {
+            display: flex; /* Use Flexbox to create two columns */
+            justify-content: space-between; /* Space videos evenly */
+            gap: 20px; /* Add some space between the columns */
+        }
+        .video-column {
+            flex: 1; /* Each column takes up equal width */
+            text-align: center; /* Center the content within each column */
+        }
+    </style>
+    <h2>This is achieved by a server that is runned on aws semi-constantly. A user sends a request in the form of a video, and the server sends back the pose video.</h2>
+</head>
+<body>
+
+<div class="video-container">
+    <!-- First Column with First Video -->
+    <div class="video-column">
+        <h2>Original Video (I've gotten better I swear)</h2>
+        <video width="100%" controls>
+            <source src="https://leochen21.github.io/LeoC.github.io/videos/Leo1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Second Column with Second Video -->
+    <div class="video-column">
+        <h2>Converted Pose Video</h2>
+        <video width="100%" controls>
+            <source src="https://leochen21.github.io/LeoC.github.io/videos/Leo1_pose_video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</div>
+
+</body>
+</html>
