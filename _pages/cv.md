@@ -6,14 +6,12 @@ author_profile: true
 redirect_from:
   - /resume
 ---
-
 {% include base_path %}
 
 # My Resume
-You can download Leo Chen's resume in PDF format here: [Leo Chen Resume PDF](../files/Leo%20Chen%20Resume.pdf).
+You can view Leo Chen's resume below:
 
-<!-- Publications
-======
-  <ul>{% for post in site.publications reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul> -->
+<!-- Embed the PDF in the page -->
+<iframe src="../files/Leo%20Chen%20Resume.pdf" width="100%" height="600px">
+  This browser does not support PDFs. Please download the PDF to view it: <a href="../files/Leo%20Chen%20Resume.pdf">Download Resume</a>.
+</iframe>
