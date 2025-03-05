@@ -1,6 +1,6 @@
 ---
-title: "Project DaVinci"
-excerpt: "Converts video of basketball shot to a video depicting shooting form."
+title: "GAINS: Generative Artificial Intelligence for NPC Simulation"
+excerpt: "A project in Unreal Engine for simulating AI NPC movement through various landscapes"
 collection: portfolio
 ---
 
@@ -8,20 +8,24 @@ collection: portfolio
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Project DaVinci</title>
+    <title>GAINS</title>
     <style>
         .video-container {
             display: flex; /* Use Flexbox to create two columns */
             justify-content: space-between; /* Space videos evenly */
             gap: 20px; /* Add some space between the columns */
+            flex-wrap: wrap; /* Allow videos to stack on smaller screens */
         }
         .video-column {
             flex: 1; /* Each column takes up equal width */
+            max-width: 560px; /* Limit width to YouTube's standard size */
             text-align: center; /* Center the content within each column */
         }
-        .app-link {
-            text-align: center;
-            margin-top: 20px;
+        iframe {
+            width: 100%; /* Make the iframe responsive */
+            aspect-ratio: 16 / 9; /* Maintain the 16:9 aspect ratio */
+            max-width: 560px; /* Set maximum width for better scaling */
+            border: none; /* Remove border for a cleaner look */
         }
     </style>
 </head>
@@ -30,26 +34,15 @@ collection: portfolio
 <div class="video-container">
     <!-- First Column with First Video -->
     <div class="video-column">
-        <h2>Original Video (I've gotten better I swear)</h2>
-        <video width="100%" controls>
-            <source src="https://leochen21.github.io/LeoC.github.io/videos/Leo1.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+        <h2>Heatmap Version 1</h2>
+        <iframe src="https://www.youtube.com/embed/ZY57LuPqkXQ?start=14" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 
     <!-- Second Column with Second Video -->
     <div class="video-column">
-        <h2>Converted Pose Video</h2>
-        <video width="100%" controls>
-            <source src="https://leochen21.github.io/LeoC.github.io/videos/Leo1_pose_video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+        <h2>Heatmap Version 2</h2>
+        <iframe src="https://www.youtube.com/embed/gjNX8DXJ3lw?start=52" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
-</div>
-
-<!-- Web App Link -->
-<div class="app-link">
-    <h2><a href="https://leochen21.github.io/DaVinci/" target="_blank">Try the Web App</a></h2>
 </div>
 
 </body>
