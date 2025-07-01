@@ -4,46 +4,283 @@ excerpt: "A project in Unreal Engine for simulating AI NPC movement through vari
 collection: portfolio
 ---
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>GAINS</title>
-    <style>
-        .video-container {
-            display: flex; /* Use Flexbox to create two columns */
-            justify-content: space-between; /* Space videos evenly */
-            gap: 20px; /* Add some space between the columns */
-            flex-wrap: wrap; /* Allow videos to stack on smaller screens */
-        }
-        .video-column {
-            flex: 1; /* Each column takes up equal width */
-            max-width: 560px; /* Limit width to YouTube's standard size */
-            text-align: center; /* Center the content within each column */
-        }
-        iframe {
-            width: 100%; /* Make the iframe responsive */
-            aspect-ratio: 16 / 9; /* Maintain the 16:9 aspect ratio */
-            max-width: 560px; /* Set maximum width for better scaling */
-            border: none; /* Remove border for a cleaner look */
-        }
-    </style>
-</head>
-<body>
+<style>
+.project-hero {
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  color: white;
+  padding: 3rem 2rem;
+  margin: -2rem -2rem 3rem -2rem;
+  text-align: center;
+  border-radius: 0 0 20px 20px;
+  position: relative;
+  overflow: hidden;
+}
 
-<div class="video-container">
-    <!-- First Column with First Video -->
-    <div class="video-column">
-        <h2>Heatmap Version 1</h2>
-        <iframe src="https://www.youtube.com/embed/ZY57LuPqkXQ?start=14" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
+.project-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="gaming" width="50" height="50" patternUnits="userSpaceOnUse"><text x="25" y="30" text-anchor="middle" fill="white" opacity="0.1" font-size="18">🎮</text></pattern></defs><rect width="100" height="100" fill="url(%23gaming)"/></svg>');
+  opacity: 0.3;
+}
 
-    <!-- Second Column with Second Video -->
-    <div class="video-column">
-        <h2>Heatmap Version 2</h2>
-        <iframe src="https://www.youtube.com/embed/gjNX8DXJ3lw?start=52" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+.project-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.project-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.project-hero p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+
+.tech-tag {
+  background: rgba(255,255,255,0.2);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.project-section {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  margin: 2rem 0;
+  overflow: hidden;
+  border: 1px solid #e1e8ed;
+}
+
+.section-header {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid #e1e8ed;
+}
+
+.section-header h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.section-content {
+  padding: 2rem;
+}
+
+.video-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 0;
+}
+
+.video-column {
+  text-align: center;
+}
+
+.video-column h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.video-column iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-width: 560px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.video-column iframe:hover {
+  transform: scale(1.02);
+}
+
+.project-description {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 15px;
+  margin: 2rem 0;
+  border: 1px solid #e1e8ed;
+}
+
+.project-description h3 {
+  font-size: 1.3rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.project-description p {
+  color: #666;
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.feature-item {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid #e1e8ed;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.feature-item h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.feature-item p {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.video-description {
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-top: 1rem;
+  text-align: left;
+}
+
+.video-description p {
+  color: #856404;
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .project-hero {
+    margin: -1rem -1rem 2rem -1rem;
+    padding: 2rem 1rem;
+  }
+  
+  .project-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .video-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .section-content {
+    padding: 1.5rem;
+  }
+  
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<div class="project-hero">
+  <div class="project-hero-content">
+    <h1>🎮 GAINS: AI NPC Simulation</h1>
+    <p>Generative Artificial Intelligence for NPC Simulation - Advanced AI-driven character behavior system built in Unreal Engine</p>
+    
+    <div class="tech-tags">
+      <span class="tech-tag">Unreal Engine</span>
+      <span class="tech-tag">AI Simulation</span>
+      <span class="tech-tag">Game Development</span>
+      <span class="tech-tag">C++</span>
+      <span class="tech-tag">Heatmap Analytics</span>
     </div>
+  </div>
 </div>
 
-</body>
-</html>
+<div class="project-description">
+  <h3>🎯 Project Overview</h3>
+  <p>GAINS (Generative Artificial Intelligence for NPC Simulation) is an innovative game development project that leverages advanced AI algorithms to create intelligent NPC behavior systems. Built in Unreal Engine, this project demonstrates sophisticated pathfinding, decision-making, and environmental interaction patterns through heatmap visualization and real-time analytics.</p>
+</div>
+
+<div class="project-section">
+  <div class="section-header">
+    <h2>🔍 Key Features</h2>
+  </div>
+  <div class="section-content">
+    <div class="features-grid">
+      <div class="feature-item">
+        <h4>🧠 AI Pathfinding</h4>
+        <p>Advanced algorithmic navigation through complex environments</p>
+      </div>
+      <div class="feature-item">
+        <h4>📊 Heatmap Analytics</h4>
+        <p>Visual representation of NPC movement patterns and behaviors</p>
+      </div>
+      <div class="feature-item">
+        <h4>🎮 Real-time Simulation</h4>
+        <p>Dynamic AI decision-making and environmental adaptation</p>
+      </div>
+      <div class="feature-item">
+        <h4>⚡ Performance Optimization</h4>
+        <p>Efficient algorithms designed for large-scale simulations</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="project-section">
+  <div class="section-header">
+    <h2>🎬 Simulation Demonstrations</h2>
+  </div>
+  <div class="section-content">
+    <div class="video-container">
+      <div class="video-column">
+        <h3>Heatmap Version 1: Initial Implementation</h3>
+        <iframe src="https://www.youtube.com/embed/ZY57LuPqkXQ?start=14" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        <div class="video-description">
+          <p>🔍 This demonstration showcases the initial heatmap implementation, highlighting basic NPC movement patterns and environmental interaction analytics.</p>
+        </div>
+      </div>
+      
+      <div class="video-column">
+        <h3>Heatmap Version 2: Enhanced Analytics</h3>
+        <iframe src="https://www.youtube.com/embed/gjNX8DXJ3lw?start=52" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        <div class="video-description">
+          <p>⚡ The enhanced version displays improved visualization techniques with more sophisticated AI behavior analysis and real-time performance metrics.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

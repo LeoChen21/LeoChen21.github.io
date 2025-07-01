@@ -1,7 +1,286 @@
 ---
-title: "Scripts"
-excerpt: "A downloadable folder containing the lastest scripts I use. It's mostly here so I can easily set it up on other systems. <a href='/LeoC.github.io/files/Downloaded.zip' download>Download Scripts</a>"
+title: "Development Scripts Collection"
+excerpt: "A curated collection of utility scripts and automation tools for faster development workflows."
 collection: portfolio
 ---
 
-1 A downloadable folder containing the lastest scripts I use code faster. <a href="~/files/Downloaded.zip" download>Download Scripts</a>
+<style>
+.project-hero {
+  background: linear-gradient(135deg, #17a2b8 0%, #6c757d 100%);
+  color: white;
+  padding: 3rem 2rem;
+  margin: -2rem -2rem 3rem -2rem;
+  text-align: center;
+  border-radius: 0 0 20px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="scripts" width="45" height="45" patternUnits="userSpaceOnUse"><text x="22" y="28" text-anchor="middle" fill="white" opacity="0.1" font-size="16">⚙️</text></pattern></defs><rect width="100" height="100" fill="url(%23scripts)"/></svg>');
+  opacity: 0.3;
+}
+
+.project-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.project-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.project-hero p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+
+.tech-tag {
+  background: rgba(255,255,255,0.2);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.project-section {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  margin: 2rem 0;
+  overflow: hidden;
+  border: 1px solid #e1e8ed;
+}
+
+.section-header {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid #e1e8ed;
+}
+
+.section-header h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.section-content {
+  padding: 2rem;
+}
+
+.download-area {
+  text-align: center;
+  background: #f8f9fa;
+  padding: 3rem 2rem;
+  border-radius: 15px;
+  margin: 2rem 0;
+  border: 2px dashed #dee2e6;
+}
+
+.download-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+}
+
+.download-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  background: #17a2b8;
+  color: white !important;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(23, 162, 184, 0.3);
+  margin-top: 1rem;
+}
+
+.download-button:hover {
+  background: #138496;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(23, 162, 184, 0.4);
+  text-decoration: none;
+  color: white !important;
+}
+
+.project-description {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 15px;
+  margin: 2rem 0;
+  border: 1px solid #e1e8ed;
+}
+
+.project-description h3 {
+  font-size: 1.3rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.project-description p {
+  color: #666;
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.feature-item {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid #e1e8ed;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.feature-item h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.feature-item p {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.note-box {
+  background: #e7f3ff;
+  border-left: 4px solid #17a2b8;
+  padding: 1rem 1.5rem;
+  border-radius: 5px;
+  margin: 1.5rem 0;
+}
+
+.note-box p {
+  color: #0c5460;
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .project-hero {
+    margin: -1rem -1rem 2rem -1rem;
+    padding: 2rem 1rem;
+  }
+  
+  .project-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .download-area {
+    padding: 2rem 1rem;
+  }
+  
+  .section-content {
+    padding: 1.5rem;
+  }
+  
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<div class="project-hero">
+  <div class="project-hero-content">
+    <h1>⚙️ Development Scripts Collection</h1>
+    <p>A curated collection of utility scripts and automation tools designed to accelerate development workflows and system setup processes</p>
+    
+    <div class="tech-tags">
+      <span class="tech-tag">Shell Scripts</span>
+      <span class="tech-tag">Automation</span>
+      <span class="tech-tag">DevOps</span>
+      <span class="tech-tag">Utilities</span>
+      <span class="tech-tag">Productivity</span>
+    </div>
+  </div>
+</div>
+
+<div class="project-description">
+  <h3>🎯 Collection Overview</h3>
+  <p>This comprehensive script collection contains battle-tested automation tools and utilities that I've developed over time to streamline development processes. These scripts are primarily designed for personal use to quickly set up development environments and automate repetitive tasks across different systems.</p>
+</div>
+
+<div class="project-section">
+  <div class="section-header">
+    <h2>📦 What's Included</h2>
+  </div>
+  <div class="section-content">
+    <div class="features-grid">
+      <div class="feature-item">
+        <h4>🛠️ Setup Scripts</h4>
+        <p>Automated environment configuration and dependency installation</p>
+      </div>
+      <div class="feature-item">
+        <h4>⚡ Build Automation</h4>
+        <p>Streamlined build processes and deployment workflows</p>
+      </div>
+      <div class="feature-item">
+        <h4>🔧 System Utilities</h4>
+        <p>File management, backup, and system maintenance scripts</p>
+      </div>
+      <div class="feature-item">
+        <h4>📊 Development Tools</h4>
+        <p>Code quality checks, testing helpers, and productivity boosters</p>
+      </div>
+    </div>
+    
+    <div class="note-box">
+      <p><strong>💡 Note:</strong> These scripts are primarily maintained for personal use across multiple development systems. They may require customization for your specific environment and use cases.</p>
+    </div>
+  </div>
+</div>
+
+<div class="project-section">
+  <div class="section-header">
+    <h2>⬇️ Download Collection</h2>
+  </div>
+  <div class="section-content">
+    <div class="download-area">
+      <div class="download-icon">📁</div>
+      <h3>Scripts Collection Archive</h3>
+      <p>Download the complete collection of development scripts and utilities</p>
+      <a href="../files/Downloaded.zip" download class="download-button">
+        ⬇️ Download Scripts (.zip)
+      </a>
+    </div>
+  </div>
+</div>

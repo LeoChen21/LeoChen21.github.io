@@ -4,40 +4,308 @@ excerpt: "JavaScript/TypeScript module registry provides metrics on module relia
 collection: portfolio
 ---
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>TrustWorthy Package Registry</title>
-    <style>
-        .image-container {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-    </style>
-</head>
-<body>
+<style>
+.project-hero {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+  padding: 3rem 2rem;
+  margin: -2rem -2rem 3rem -2rem;
+  text-align: center;
+  border-radius: 0 0 20px 20px;
+  position: relative;
+  overflow: hidden;
+}
 
-<!-- Display Main Page -->
-<div class="image-container">
-    <img src="https://leochen21.github.io/images/MainPage.png" alt="Main Page" width="100%" />
+.project-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="packages" width="50" height="50" patternUnits="userSpaceOnUse"><text x="25" y="30" text-anchor="middle" fill="white" opacity="0.1" font-size="18">📦</text></pattern></defs><rect width="100" height="100" fill="url(%23packages)"/></svg>');
+  opacity: 0.3;
+}
+
+.project-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.project-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.project-hero p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+
+.tech-tag {
+  background: rgba(255,255,255,0.2);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.project-section {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  margin: 2rem 0;
+  overflow: hidden;
+  border: 1px solid #e1e8ed;
+}
+
+.section-header {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid #e1e8ed;
+}
+
+.section-header h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.section-content {
+  padding: 2rem;
+}
+
+.screenshot-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin: 0;
+}
+
+.screenshot-item {
+  text-align: center;
+}
+
+.screenshot-item h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.screenshot-item img {
+  width: 100%;
+  max-width: 800px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  border: 2px solid #e1e8ed;
+}
+
+.screenshot-item img:hover {
+  transform: scale(1.02);
+}
+
+.action-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.action-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: #28a745;
+  color: white !important;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+}
+
+.action-link:hover {
+  background: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+  text-decoration: none;
+  color: white !important;
+}
+
+.action-link.demo {
+  background: #007bff;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+
+.action-link.demo:hover {
+  background: #0056b3;
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+}
+
+.project-description {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 15px;
+  margin: 2rem 0;
+  border: 1px solid #e1e8ed;
+}
+
+.project-description h3 {
+  font-size: 1.3rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.project-description p {
+  color: #666;
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.feature-item {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid #e1e8ed;
+  text-align: center;
+}
+
+.feature-item h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.feature-item p {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .project-hero {
+    margin: -1rem -1rem 2rem -1rem;
+    padding: 2rem 1rem;
+  }
+  
+  .project-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .action-links {
+    flex-direction: column;
+  }
+  
+  .section-content {
+    padding: 1.5rem;
+  }
+  
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<div class="project-hero">
+  <div class="project-hero-content">
+    <h1>📦 Trustworthy Module Registry</h1>
+    <p>Advanced package registry system that evaluates JavaScript/TypeScript modules with comprehensive reliability metrics and security assessments</p>
+    
+    <div class="tech-tags">
+      <span class="tech-tag">JavaScript</span>
+      <span class="tech-tag">TypeScript</span>
+      <span class="tech-tag">Web Development</span>
+      <span class="tech-tag">Package Management</span>
+      <span class="tech-tag">Security Analysis</span>
+    </div>
+  </div>
 </div>
 
-<!-- Display Package Rating -->
-<div class="image-container">
-    <img src="https://leochen21.github.io/images/PackageRating.png" alt="Package Rating" width="100%" />
+<div class="project-description">
+  <h3>🎯 Project Overview</h3>
+  <p>The Trustworthy Module Registry is a comprehensive package evaluation system designed to help developers make informed decisions about JavaScript and TypeScript modules. The platform analyzes various metrics including code quality, security vulnerabilities, maintenance status, and community trust to provide reliability scores for packages.</p>
 </div>
 
-
-<!-- Github -->
-<div class="app-link">
-    <h2><a href="https://github.com/ECE-461-Team-9/Course-Project-Phase-2" target="_blank">See GitHub</a></h2>
+<div class="project-section">
+  <div class="section-header">
+    <h2>🔍 Key Features</h2>
+  </div>
+  <div class="section-content">
+    <div class="features-grid">
+      <div class="feature-item">
+        <h4>🛡️ Security Analysis</h4>
+        <p>Comprehensive vulnerability scanning and security assessment</p>
+      </div>
+      <div class="feature-item">
+        <h4>📊 Quality Metrics</h4>
+        <p>Code quality analysis and maintainability scoring</p>
+      </div>
+      <div class="feature-item">
+        <h4>🔄 Update Tracking</h4>
+        <p>Monitor package updates and maintenance status</p>
+      </div>
+      <div class="feature-item">
+        <h4>⭐ Trust Scoring</h4>
+        <p>Community-driven reliability and trust ratings</p>
+      </div>
+    </div>
+  </div>
 </div>
 
-<!-- Web App Link -->
-<div class="app-link">
-    <h2><a href="https://ece-461-team-9.github.io/" target="_blank">Try the Web App</a></h2>
+<div class="project-section">
+  <div class="section-header">
+    <h2>🖥️ Application Screenshots</h2>
+  </div>
+  <div class="section-content">
+    <div class="screenshot-container">
+      <div class="screenshot-item">
+        <h3>Main Dashboard Interface</h3>
+        <img src="https://leochen21.github.io/images/MainPage.png" alt="Main Page Dashboard" loading="lazy" />
+      </div>
+      
+      <div class="screenshot-item">
+        <h3>Package Rating & Analytics</h3>
+        <img src="https://leochen21.github.io/images/PackageRating.png" alt="Package Rating System" loading="lazy" />
+      </div>
+    </div>
+    
+    <div class="action-links">
+      <a href="https://github.com/ECE-461-Team-9/Course-Project-Phase-2" target="_blank" class="action-link">
+        💻 View Source Code
+      </a>
+      <a href="https://ece-461-team-9.github.io/" target="_blank" class="action-link demo">
+        🚀 Try Live Demo
+      </a>
+    </div>
+  </div>
 </div>
-
-</body>
-</html>

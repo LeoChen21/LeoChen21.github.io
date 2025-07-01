@@ -4,58 +4,260 @@ excerpt: "Converts video of basketball shot to a video depicting shooting form."
 collection: portfolio
 ---
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Project DaVinci</title>
-    <style>
-        .video-container {
-            display: flex; /* Use Flexbox to create two columns */
-            justify-content: space-between; /* Space videos evenly */
-            gap: 20px; /* Add some space between the columns */
-        }
-        .video-column {
-            flex: 1; /* Each column takes up equal width */
-            text-align: center; /* Center the content within each column */
-        }
-        .app-link {
-            text-align: center;
-            margin-top: 20px;
-        }
-    </style>
-</head>
-<body>
+<style>
+.project-hero {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 3rem 2rem;
+  margin: -2rem -2rem 3rem -2rem;
+  text-align: center;
+  border-radius: 0 0 20px 20px;
+  position: relative;
+  overflow: hidden;
+}
 
-<div class="video-container">
-    <!-- First Column with First Video -->
-    <div class="video-column">
-        <h2>Original Video (I've gotten better I swear)</h2>
-        <video width="100%" controls>
-            <source src="https://leochen21.github.io/LeoC.github.io/videos/Leo1.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+.project-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="basketballs" width="40" height="40" patternUnits="userSpaceOnUse"><text x="20" y="25" text-anchor="middle" fill="white" opacity="0.1" font-size="16">🏀</text></pattern></defs><rect width="100" height="100" fill="url(%23basketballs)"/></svg>');
+  opacity: 0.3;
+}
+
+.project-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.project-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.project-hero p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+
+.tech-tag {
+  background: rgba(255,255,255,0.2);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.project-section {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  margin: 2rem 0;
+  overflow: hidden;
+  border: 1px solid #e1e8ed;
+}
+
+.section-header {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid #e1e8ed;
+}
+
+.section-header h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.section-content {
+  padding: 2rem;
+}
+
+.video-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 0;
+}
+
+.video-column {
+  text-align: center;
+}
+
+.video-column h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.video-column video {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.video-column video:hover {
+  transform: scale(1.02);
+}
+
+.action-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.action-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: #667eea;
+  color: white !important;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.action-link:hover {
+  background: #5a6fd8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  text-decoration: none;
+  color: white !important;
+}
+
+.action-link.demo {
+  background: #28a745;
+  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+}
+
+.action-link.demo:hover {
+  background: #218838;
+  box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+}
+
+.project-description {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 15px;
+  margin: 2rem 0;
+  border: 1px solid #e1e8ed;
+}
+
+.project-description h3 {
+  font-size: 1.3rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.project-description p {
+  color: #666;
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .project-hero {
+    margin: -1rem -1rem 2rem -1rem;
+    padding: 2rem 1rem;
+  }
+  
+  .project-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .video-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .action-links {
+    flex-direction: column;
+  }
+  
+  .section-content {
+    padding: 1.5rem;
+  }
+}
+</style>
+
+<div class="project-hero">
+  <div class="project-hero-content">
+    <h1>🏀 Project DaVinci</h1>
+    <p>Advanced computer vision system that analyzes basketball shooting form and generates detailed pose estimation videos</p>
+    
+    <div class="tech-tags">
+      <span class="tech-tag">Computer Vision</span>
+      <span class="tech-tag">Python</span>
+      <span class="tech-tag">Machine Learning</span>
+      <span class="tech-tag">Video Processing</span>
+      <span class="tech-tag">Pose Estimation</span>
     </div>
+  </div>
+</div>
 
-    <!-- Second Column with Second Video -->
-    <div class="video-column">
-        <h2>Converted Pose Video</h2>
-        <video width="100%" controls>
-            <source src="https://leochen21.github.io/LeoC.github.io/videos/Leo1_pose_video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
+<div class="project-description">
+  <h3>🎯 Project Overview</h3>
+  <p>Project DaVinci leverages advanced computer vision algorithms to analyze basketball shooting form. By processing video input, the system extracts key pose data and generates detailed visualization showing body position, joint angles, and movement patterns. This tool helps athletes and coaches understand shooting mechanics and identify areas for improvement.</p>
+</div>
+
+<div class="project-section">
+  <div class="section-header">
+    <h2>📹 Video Demonstrations</h2>
+  </div>
+  <div class="section-content">
+    <div class="video-container">
+      <div class="video-column">
+        <h3>Original Basketball Shot</h3>
+        <video controls>
+          <source src="https://leochen21.github.io/LeoC.github.io/videos/Leo1.mp4" type="video/mp4">
+          Your browser does not support the video tag.
         </video>
+      </div>
+      
+      <div class="video-column">
+        <h3>AI-Generated Pose Analysis</h3>
+        <video controls>
+          <source src="https://leochen21.github.io/LeoC.github.io/videos/Leo1_pose_video.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
     </div>
+    
+    <div class="action-links">
+      <a href="https://github.com/LeoChen21/DaVinci" target="_blank" class="action-link">
+        💻 View Source Code
+      </a>
+      <a href="https://leochen21.github.io/DaVinci/" target="_blank" class="action-link demo">
+        🚀 Try Live Demo
+      </a>
+    </div>
+  </div>
 </div>
-
-<!-- Github -->
-<div class="app-link">
-    <h2><a href="https://github.com/LeoChen21/DaVinci" target="_blank">See GitHub</a></h2>
-</div>
-
-<!-- Web App Link -->
-<div class="app-link">
-    <h2><a href="https://leochen21.github.io/DaVinci/" target="_blank">Try the Web App</a></h2>
-</div>
-
-</body>
-</html>
