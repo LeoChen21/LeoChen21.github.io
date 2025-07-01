@@ -5,10 +5,249 @@ permalink: /portfolio/
 author_profile: true
 ---
 
+<style>
+.portfolio-hero {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 3rem 2rem;
+  margin: -2rem -2rem 3rem -2rem;
+  text-align: center;
+  border-radius: 0 0 20px 20px;
+}
+
+.portfolio-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.portfolio-hero p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.portfolio-item {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid #e1e8ed;
+}
+
+.portfolio-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.portfolio-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.portfolio-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.portfolio-excerpt {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.portfolio-content {
+  padding: 1.5rem;
+}
+
+.portfolio-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.portfolio-tag {
+  background: #e3f2fd;
+  color: #1976d2;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.portfolio-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.portfolio-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: #667eea;
+  color: white !important;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.portfolio-link:hover {
+  background: #5a6fd8;
+  transform: translateY(-2px);
+  text-decoration: none;
+  color: white !important;
+}
+
+.portfolio-link.demo {
+  background: #28a745;
+}
+
+.portfolio-link.demo:hover {
+  background: #218838;
+}
+
+.featured-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #ff6b35;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .portfolio-hero {
+    margin: -1rem -1rem 2rem -1rem;
+    padding: 2rem 1rem;
+  }
+  
+  .portfolio-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .portfolio-links {
+    flex-direction: column;
+  }
+}
+</style>
+
+<div class="portfolio-hero">
+  <h1>🚀 My Portfolio</h1>
+  <p>Explore my technical projects spanning computer vision, web development, AI/ML, and software engineering solutions</p>
+</div>
+
 {% include base_path %}
 
+<div class="portfolio-grid">
+  {% assign featured_projects = "Project DaVinci,Trustworthy Module Registry,Project OWL,GAINS: Generative Artificial Intelligence for NPC Simulation" | split: "," %}
+  
+  {% for post in site.portfolio %}
+    <div class="portfolio-item" style="position: relative;">
+      {% if featured_projects contains post.title %}
+        <div class="featured-badge">✨ Featured</div>
+      {% endif %}
+      
+      <div class="portfolio-header">
+        <h3 class="portfolio-title">{{ post.title }}</h3>
+        <p class="portfolio-excerpt">{{ post.excerpt | strip_html }}</p>
+      </div>
+      
+      <div class="portfolio-content">
+        {% assign tags = "" %}
+        {% if post.title contains "DaVinci" %}
+          {% assign tags = "Computer Vision,Python,Machine Learning,Video Processing" %}
+        {% elsif post.title contains "Trustworthy" %}
+          {% assign tags = "JavaScript,TypeScript,Web Development,Package Management" %}
+        {% elsif post.title contains "OWL" %}
+          {% assign tags = "Full Stack,Vercel,PostgreSQL,Web App" %}
+        {% elsif post.title contains "GAINS" %}
+          {% assign tags = "Unreal Engine,AI Simulation,Game Development,C++" %}
+        {% elsif post.title contains "Gale" %}
+          {% assign tags = "Python,ChatGPT API,Automation,CLI Tool" %}
+        {% elsif post.title contains "Scripts" %}
+          {% assign tags = "Shell Scripts,Automation,DevOps,Utilities" %}
+        {% endif %}
+        
+        {% if tags != "" %}
+          <div class="portfolio-tags">
+            {% assign tag_array = tags | split: "," %}
+            {% for tag in tag_array %}
+              <span class="portfolio-tag">{{ tag }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
+        
+        <div class="portfolio-links">
+          <a href="{{ post.url | relative_url }}" class="portfolio-link">
+            📖 View Details
+          </a>
+          
+          {% if post.title contains "DaVinci" %}
+            <a href="https://github.com/LeoChen21/DaVinci" target="_blank" class="portfolio-link">
+              🔗 GitHub
+            </a>
+            <a href="https://leochen21.github.io/DaVinci/" target="_blank" class="portfolio-link demo">
+              🚀 Live Demo
+            </a>
+          {% elsif post.title contains "Trustworthy" %}
+            <a href="https://github.com/ECE-461-Team-9/Course-Project-Phase-2" target="_blank" class="portfolio-link">
+              🔗 GitHub
+            </a>
+            <a href="https://ece-461-team-9.github.io/" target="_blank" class="portfolio-link demo">
+              🚀 Live Demo
+            </a>
+          {% elsif post.title contains "OWL" %}
+            <a href="https://github.com/LeoChen21/vercelibrary" target="_blank" class="portfolio-link">
+              🔗 GitHub
+            </a>
+            <a href="https://vercelibrary.vercel.app" target="_blank" class="portfolio-link demo">
+              🚀 Live Demo
+            </a>
+          {% elsif post.title contains "Gale" %}
+            <a href="https://github.com/LeoChen21/Gale" target="_blank" class="portfolio-link">
+              🔗 GitHub
+            </a>
+          {% elsif post.title contains "Scripts" %}
+            <a href="{{ base_path }}/files/Downloaded.zip" download class="portfolio-link demo">
+              ⬇️ Download
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
 
-{% for post in site.portfolio %}
-  {% include archive-single.html %}
-{% endfor %}
+<div style="margin-top: 3rem; padding: 2rem; background: #f8f9fa; border-radius: 15px; text-align: center;">
+  <h3 style="color: #2c3e50; margin-bottom: 1rem;">🌟 More Projects Coming Soon!</h3>
+  <p style="color: #666; margin-bottom: 1.5rem;">I'm always working on new and exciting projects. Check back regularly for updates!</p>
+  <a href="https://github.com/LeoChen21" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: #24292e; color: white; text-decoration: none; border-radius: 25px; font-weight: 500;">
+    🔗 View All on GitHub
+  </a>
+</div>
 
