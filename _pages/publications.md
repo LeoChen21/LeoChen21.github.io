@@ -1,6 +1,5 @@
 ---
 layout: archive
-title: "Publications"
 permalink: /publications/
 author_profile: true
 ---
@@ -10,9 +9,9 @@ author_profile: true
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   padding: 3rem 2rem;
-  margin: -2rem -2rem 3rem -2rem;
+  margin: 0 0 3rem 0;
   text-align: center;
-  border-radius: 0 0 20px 20px;
+  border-radius: 20px;
   position: relative;
   overflow: hidden;
 }
@@ -296,7 +295,7 @@ author_profile: true
 
 @media (max-width: 768px) {
   .publications-hero {
-    margin: -1rem -1rem 2rem -1rem;
+    margin: 0 0 2rem 0;
     padding: 2rem 1rem;
   }
   

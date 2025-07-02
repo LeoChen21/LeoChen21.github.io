@@ -1,6 +1,5 @@
 ---
 layout: archive
-title: "CV"
 permalink: /cv/
 author_profile: true
 redirect_from:
@@ -12,9 +11,9 @@ redirect_from:
   background: linear-gradient(135deg, #495057 0%, #6c757d 100%);
   color: white;
   padding: 3rem 2rem;
-  margin: -2rem -2rem 3rem -2rem;
+  margin: 0 0 3rem 0;
   text-align: center;
-  border-radius: 0 0 20px 20px;
+  border-radius: 20px;
   position: relative;
   overflow: hidden;
 }
@@ -220,7 +219,7 @@ redirect_from:
 
 @media (max-width: 768px) {
   .cv-hero {
-    margin: -1rem -1rem 2rem -1rem;
+    margin: 0 0 2rem 0;
     padding: 2rem 1rem;
   }
   
