@@ -12,9 +12,11 @@
 
   @include clearfix();
   margin-bottom: 1em;
+  padding: 20px;
   background-color: #ffffff;
   border-radius: $border-radius;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.05);
 
   @media screen and (min-width: $sidebar-screen-min-width) {
     height: auto;
@@ -90,15 +92,23 @@
     display: block;
     width: auto;
     height: auto;
+    text-align: center;
+    margin-bottom: 15px;
   }
 
   img {
     max-width: 175px;
     border-radius: 50%;
+    transition: transform 0.3s ease;
 
     @include breakpoint($large) {
-      padding: 5px;
-      border: 1px solid $border-color;
+      padding: 8px;
+      border: 2px solid $border-color;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    &:hover {
+      transform: scale(1.05);
     }
   }
 }
@@ -106,15 +116,16 @@
 .author__content {
   display: table-cell;
   vertical-align: top;
-  padding-left: 15px;
-  padding-right: 25px;
-  line-height: 1;
+  padding-left: 20px;
+  padding-right: 20px;
+  line-height: 1.4;
 
   @include breakpoint($large) {
     display: block;
     width: 100%;
     padding-left: 0;
     padding-right: 0;
+    text-align: center;
   }
 }
 
@@ -189,23 +200,25 @@
   position: absolute;
   right: 0;
   margin-top: 15px;
-  padding: 10px;
+  padding: 15px;
   list-style-type: none;
   border: 1px solid $border-color;
   border-radius: $border-radius;
   background: #fff;
   z-index: -1;
-  box-shadow: 0 0 10px rgba(#000, 0.25);
+  box-shadow: 0 4px 15px rgba(#000, 0.2);
   cursor: default;
 
   @include breakpoint($large) {
     display: block;
     position: relative;
-    margin: 0;
-    padding: 0;
+    margin: 15px 0 0 0;
+    padding: 15px 0 0 0;
     border: 0;
+    border-top: 2px solid $lighter-gray;
     background: transparent;
     box-shadow: none;
+    text-align: center;
   }
 
   &:before {
@@ -248,16 +261,31 @@
 
   a {
     display: block;
-    margin-bottom: 5px;
-    padding-right: 5px;
-    padding-top: 2px;
-    padding-bottom: 2px;
+    margin-bottom: 8px;
+    padding: 8px 12px;
     color: inherit;
     font-size: $type-size-5;
     text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+
+    @include breakpoint($large) {
+      display: inline-block;
+      margin: 0 4px 8px 4px;
+      padding: 6px 10px;
+      background-color: rgba($primary-color, 0.1);
+      border: 1px solid rgba($primary-color, 0.2);
+    }
 
     &:hover {
-      text-decoration: underline;
+      text-decoration: none;
+      transform: translateY(-2px);
+      
+      @include breakpoint($large) {
+        background-color: rgba($primary-color, 0.2);
+        border-color: rgba($primary-color, 0.4);
+        box-shadow: 0 2px 8px rgba($primary-color, 0.3);
+      }
     }
   }
 }
