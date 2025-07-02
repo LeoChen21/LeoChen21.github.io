@@ -12,6 +12,8 @@
 
   @include clearfix();
   margin-bottom: 1em;
+  background-color: $background-color;
+  border-radius: $border-radius;
 
   @media screen and (min-width: $sidebar-screen-min-width) {
     height: 100vh;
